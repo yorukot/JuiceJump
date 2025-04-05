@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd8yvkp3r38t3"]
+
+[ext_resource type="Script" uid="uid://canvqy54nblnj" path="res://Scripts/Collectables/Fruit.gd" id="1_2x4sb"]
+[ext_resource type="Texture2D" uid="uid://cs1d058akoq04" path="res://yellow_box.png" id="2_lfp56"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m27qa"]
+radius = 14.0
+
+[node name="Banana" type="Area2D" groups=["Fruits"]]
+z_index = 10
+script = ExtResource("1_2x4sb")
+points = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lfp56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m27qa")

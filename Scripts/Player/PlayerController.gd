@@ -22,6 +22,14 @@ var jump_direction = 0 # 0 for none, 1 for right, -1 for left
 var is_charging = false
 var current_charge = 0
 var charge_time = 0.0
+var fruits_collected = 0
+
+# Signal emitted when fruit is collected
+signal fruit_collected(points)
+
+func _ready():
+	# Add the player to the "Player" group for fruit detection
+	add_to_group("Player")
 
 func _physics_process(delta):
 	# Handle jump charging and jumping
@@ -40,12 +48,14 @@ func _physics_process(delta):
 			current_charge = (charge_time / max_charge_time) * max_jump_force
 			
 			# When direction is pressed after charging, apply the jump
-			if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+			if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_released("jump"):
 				# Set jump direction based on input
 				if Input.is_action_pressed("move_right"):
 					jump_direction = 1
 				elif Input.is_action_pressed("move_left"):
 					jump_direction = -1
+				elif Input.is_action_just_released("jump"):
+					jump_direction = 0
 					
 				# Calculate jump angle based on charge time
 				var charge_percent = charge_time / max_charge_time
@@ -53,7 +63,7 @@ func _physics_process(delta):
 				
 				# Calculate jump direction vector from angle
 				var jump_dir = Vector2(cos(jump_angle), -sin(jump_angle))
-				jump_dir.x *= jump_direction  # Apply left/right direction
+				jump_dir.x *= jump_direction # Apply left/right direction
 				
 				# Apply jump velocity
 				target_velocity = jump_dir * current_charge
@@ -120,3 +130,14 @@ func _update_charging_visual(charge_percent):
 # Reset visuals when not charging
 func _reset_charging_visual():
 	$Sprite2D.scale = Vector2(1.0, 1.0)
+
+# Called when a fruit is collected
+func collect_fruit(points):
+	fruits_collected += points
+	print("Fruits collected: ", fruits_collected)
+	emit_signal("fruit_collected", points)
+	# You can add UI updates or other effects here
+	
+# Getter for the total fruits collected
+func get_fruits_collected():
+	return fruits_collected
