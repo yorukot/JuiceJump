@@ -134,7 +134,6 @@ func _reset_charging_visual():
 # Called when a fruit is collected
 func collect_fruit(points):
 	fruits_collected += points
-	print("Fruits collected: ", fruits_collected)
 	emit_signal("fruit_collected", points)
 	# You can add UI updates or other effects here
 	

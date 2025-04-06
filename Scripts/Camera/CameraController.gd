@@ -24,15 +24,11 @@ func _process(_delta):
 	# Check if player moves beyond top of current section
 	if player_pos.y < camera_top:
 		# Move camera up one section
-		print("Moving up")
-		print(camera_top, " ", player_pos.y)
 		global_position.y -= screen_height
 		current_section += 1
 		
 	# Check if player moves beyond bottom of current section
 	elif player_pos.y > camera_bottom:
-		print("Moving down")
-		print(camera_bottom, " ", player_pos.y)
 		# Move camera down one section
 		global_position.y += screen_height
 		current_section -= 1
