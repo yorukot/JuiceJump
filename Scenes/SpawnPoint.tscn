@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chd1wdduspig7" path="res://Scripts/Camera/CameraController.gd" id="1_7liah"]
 [ext_resource type="Texture2D" uid="uid://c6ajpnem0tfb" path="res://black_box.png" id="1_t86hv"]
-[ext_resource type="PackedScene" uid="uid://cd8yvkp3r38t1" path="res://Scenes/Collectables/Apple.tscn" id="1_xwcck"]
+[ext_resource type="PackedScene" uid="uid://cd8yvkp3r38t1" path="res://Scenes/Collectables/Orange.tscn" id="1_xwcck"]
 [ext_resource type="Texture2D" uid="uid://kyj8ssf6b3oi" path="res://blue_box.png" id="2_61p7r"]
 [ext_resource type="Script" uid="uid://chf4pxc0gfq3m" path="res://Scripts/Player/PlayerController.gd" id="2_e6wm4"]
 [ext_resource type="Texture2D" uid="uid://u804xc7xg4m3" path="res://Asset/Background/Gemini_Generated_Image_1u077j1u077j1u07.jpeg" id="3_fg8dm"]
@@ -269,8 +269,8 @@ sources/2 = SubResource("TileSetAtlasSource_s1hy3")
 
 [node name="Fruits" type="Node" parent="."]
 
-[node name="Apple" parent="Fruits" instance=ExtResource("1_xwcck")]
-position = Vector2(32, 96)
+[node name="Apple" parent="." instance=ExtResource("1_xwcck")]
+position = Vector2(40, 104)
 
 [node name="Camera" type="Camera2D" parent="."]
 z_index = 20
