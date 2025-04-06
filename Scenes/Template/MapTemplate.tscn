@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bff82i15p582w" path="res://Asset/Juicer/Juicer.png" id="3_crv5v"]
 [ext_resource type="PackedScene" uid="uid://b8losccltbu4g" path="res://Scenes/Audio/JuicerAudio.tscn" id="4_f8tq8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_crv5v"]
-size = Vector2(52, 66)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8tq8"]
+size = Vector2(35, 66)
 
 [node name="MapTemplate" type="Node2D"]
 
@@ -29,7 +29,7 @@ scale = Vector2(2.0625, 2.0625)
 texture = ExtResource("3_crv5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_crv5v")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_f8tq8")
 
 [node name="JuicerAudio" parent="Player" instance=ExtResource("4_f8tq8")]
