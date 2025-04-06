@@ -48,7 +48,7 @@ func _physics_process(delta):
 			current_charge = (charge_time / max_charge_time) * max_jump_force
 			
 			# When direction is pressed after charging, apply the jump
-			if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_released("jump"):
+			if Input.is_action_just_released("jump"):
 				# Set jump direction based on input
 				if Input.is_action_pressed("move_right"):
 					jump_direction = 1
