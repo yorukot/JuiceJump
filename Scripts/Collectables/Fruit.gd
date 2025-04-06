@@ -15,6 +15,14 @@ func _ready():
 		tween.set_loops()  # Make the animation loop indefinitely
 		tween.tween_property($Sprite2D, "scale", Vector2(1.1, 1.1), 0.5)
 		tween.tween_property($Sprite2D, "scale", Vector2(1.0, 1.0), 0.5)
+	
+	# Create AudioStreamPlayer2D if it doesn't exist
+	if not has_node("AudioStreamPlayer2D"):
+		var audio_player = AudioStreamPlayer2D.new()
+		audio_player.name = "AudioStreamPlayer2D"
+		var collect_sound = load("res://Asset/Audio/collect.mp3")
+		audio_player.stream = collect_sound
+		add_child(audio_player)
 
 func _on_body_entered(body):
 	# Check if the body that entered is the player
@@ -32,12 +40,14 @@ func collect(player = null):
 	# Play collection animation/sound (optional)
 	if has_node("AudioStreamPlayer2D"):
 		$AudioStreamPlayer2D.play()
+
+	# Wait for 0.5 seconds before removing the fruit
 	
 	# Disable collision to prevent multiple collects
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	# Create a visual effect for collection
 	var collection_tween = create_tween()
-	collection_tween.tween_property($Sprite2D, "scale", Vector2(1.5, 1.5), 0.15)
-	collection_tween.tween_property($Sprite2D, "scale", Vector2(0, 0), 0.15)
+	collection_tween.tween_property($Sprite2D, "scale", Vector2(1.5, 1.5), 0.25)
+	collection_tween.tween_property($Sprite2D, "scale", Vector2(0, 0), 0.25)
 	collection_tween.tween_callback(queue_free)  # Remove the fruit after animation
