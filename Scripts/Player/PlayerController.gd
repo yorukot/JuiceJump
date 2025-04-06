@@ -62,6 +62,9 @@ func _physics_process(delta):
 			
 			# Play the juicer start sound
 			juicer_audio.play_start()
+			
+			# Switch to the charging animation based on current juice level
+			play_charging_animation()
 		
 		# Reset jump button state when released
 		if just_released_jump:
@@ -101,6 +104,10 @@ func _physics_process(delta):
 				
 				# Play the juicer end sound
 				juicer_audio.play_end()
+				
+				# Switch back to normal animation
+				$AnimatedSprite2D.play("juice_normal")
+				$AnimatedSprite2D.frame = current_animation_index
 
 	# Check for wall collisions and bounce
 	if is_on_wall() or is_on_ceiling():
@@ -167,4 +174,21 @@ func update_animation_frame():
 	# Only update if the frame has changed
 	if frame_index != current_animation_index:
 		current_animation_index = frame_index
-		$AnimatedSprite2D.frame = current_animation_index
+		
+		# Only update the sprite if we're not currently charging
+		if not is_charging:
+			$AnimatedSprite2D.play("juice_normal")
+			$AnimatedSprite2D.frame = current_animation_index
+		else:
+			# If we're charging, we need to update the charging animation
+			play_charging_animation()
+
+# Play the appropriate charging animation based on current juice level
+func play_charging_animation():
+	# For index 0, we'll stay on juice_normal since there's no juice_0 animation
+	if current_animation_index == 0:
+		$AnimatedSprite2D.play("juice_normal")
+		$AnimatedSprite2D.frame = 0
+	else:
+		var animation_name = "juice_" + str(current_animation_index)
+		$AnimatedSprite2D.play(animation_name)
