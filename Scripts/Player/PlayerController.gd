@@ -109,27 +109,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	# Visual feedback for charging
-	if is_charging:
-		var charge_percent = charge_time / max_charge_time
-		_update_charging_visual(charge_percent)
-	else:
-		_reset_charging_visual()
-
-# Update visuals based on charge amount
-func _update_charging_visual(charge_percent):
-	# Scale the sprite down a bit to indicate crouching
-	var scale_y = 1.0 - (charge_percent * 0.3)
-	$Sprite2D.scale.y = scale_y
-	
-	# You can add more visual effects here:
-	# - Particle effects
-	# - Color modulation
-	# - Animation changes
-
-# Reset visuals when not charging
-func _reset_charging_visual():
-	$Sprite2D.scale = Vector2(1.0, 1.0)
+	return 
 
 # Called when a fruit is collected
 func collect_fruit(points):
