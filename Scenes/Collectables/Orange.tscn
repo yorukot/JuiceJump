@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd8yvkp3r38t1"]
+[gd_scene load_steps=4 format=3 uid="uid://csatxvxhw3go7"]
 
 [ext_resource type="Script" uid="uid://canvqy54nblnj" path="res://Scripts/Collectables/Fruit.gd" id="1_51hlk"]
 [ext_resource type="Texture2D" uid="uid://3fb8hshr0e7x" path="res://Asset/Fruites/orange.png" id="2_6tnrr"]
