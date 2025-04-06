@@ -5,11 +5,11 @@ extends CharacterBody2D
 # The downward acceleration when in the air, in pixels per second squared.
 @export var fall_acceleration = 1000
 # Maximum jump force
-@export var max_jump_force = 500
+@export var max_jump_force = 1000
 # How quickly jump charges (force gained per second)
 @export var charge_rate = 300
 # Maximum charge time in seconds
-@export var max_charge_time = 1.0
+@export var max_charge_time = 3.0
 # Minimum jump angle (radians) - 0 degrees (horizontal)
 @export var min_jump_angle = 0.0
 # Maximum jump angle (radians) - 75 degrees (mostly vertical)
@@ -40,6 +40,9 @@ func _ready():
 	# Connect to audio signals
 	juicer_audio.start_finished.connect(_on_juicer_start_finished)
 	juicer_audio.end_finished.connect(_on_juicer_end_finished)
+	
+	# Set default animation
+	$AnimatedSprite2D.play("juice_normal")
 	
 	print("PlayerController: Ready")
 
@@ -100,12 +103,6 @@ func _physics_process(delta):
 				
 				# Play the juicer end sound
 				juicer_audio.play_end()
-				
-				# Update sprite direction
-				if jump_direction < 0:
-					$Sprite2D.flip_h = true
-				elif jump_direction > 0:
-					$Sprite2D.flip_h = false
 
 	# Check for wall collisions and bounce
 	if is_on_wall() or is_on_ceiling():
@@ -114,12 +111,6 @@ func _physics_process(delta):
 			target_velocity.x *= -0.5 * bounce_factor
 		if is_on_ceiling():
 			target_velocity.y *= -0.5 * bounce_factor
-
-		# Update the sprite direction based on bounce
-		if target_velocity.x < 0:
-			$Sprite2D.flip_h = true
-		elif target_velocity.x > 0:
-			$Sprite2D.flip_h = false
 
 	# Vertical Velocity - Apply gravity
 	if not is_on_floor():
