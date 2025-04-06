@@ -16,7 +16,6 @@ func _ready():
 	
 	# Auto-start the timer when the game loads
 	start_timer()
-	print("Timer started automatically")
 
 # Start the timer when called
 func start_timer():

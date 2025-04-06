@@ -28,7 +28,6 @@ func collect(player = null):
 	# If player is provided, directly call its collect_fruit method
 	if player and player.has_method("collect_fruit"):
 		player.collect_fruit(points)
-		print("Player collect_fruit called with " + str(points) + " points")
 	
 	# Play collection animation/sound (optional)
 	if has_node("AudioStreamPlayer2D"):

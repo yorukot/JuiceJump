@@ -44,8 +44,6 @@ func _ready():
 	# Set default animation
 	$AnimatedSprite2D.play("juice_normal")
 	
-	print("PlayerController: Ready")
-
 func _physics_process(delta):
 	# Track the jump button state
 	var just_pressed_jump = Input.is_action_just_pressed("jump")
@@ -55,7 +53,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		# Start charging jump when pressing space button
 		if just_pressed_jump and not is_charging and not jump_button_pressed:
-			print("PlayerController: Jump button pressed, starting charge")
 			is_charging = true
 			jump_button_pressed = true
 			current_charge = 0
@@ -77,7 +74,6 @@ func _physics_process(delta):
 			
 			# When jump is released, apply the jump
 			if just_released_jump:
-				print("PlayerController: Jump button released, applying jump")
 				
 				# Set jump direction based on input
 				if Input.is_action_pressed("move_right"):
@@ -130,10 +126,10 @@ func _process(_delta):
 
 # Audio signal handlers
 func _on_juicer_start_finished():
-	print("PlayerController: Received start_finished signal")
-	
+	pass
+
 func _on_juicer_end_finished():
-	print("PlayerController: Received end_finished signal")
+	pass
 	
 # Called when a fruit is collected
 func collect_fruit(points):
