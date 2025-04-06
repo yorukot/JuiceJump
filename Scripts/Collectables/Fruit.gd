@@ -19,11 +19,15 @@ func _ready():
 func _on_body_entered(body):
 	# Check if the body that entered is the player
 	if body.is_in_group("Player"):
-		collect()
+		collect(body)
 
-func collect():
+func collect(player = null):
 	# Emit the collected signal with the points value
 	emit_signal("fruit_collected", points)
+	
+	# If player is provided, directly call its collect_fruit method
+	if player and player.has_method("collect_fruit"):
+		player.collect_fruit(points)
 	
 	# Play collection animation/sound (optional)
 	if has_node("AudioStreamPlayer2D"):
@@ -36,4 +40,4 @@ func collect():
 	var tween = create_tween()
 	tween.tween_property($Sprite2D, "scale", Vector2(1.5, 1.5), 0.15)
 	tween.tween_property($Sprite2D, "scale", Vector2(0, 0), 0.15)
-	tween.tween_callback(queue_free)  # Remove the fruit after animation 
+	tween.tween_callback(queue_free)  # Remove the fruit after animation
