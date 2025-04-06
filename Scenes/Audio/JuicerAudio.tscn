@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8losccltbu4g"]
+
+[ext_resource type="Script" uid="uid://22iggomscyju" path="res://Scripts/Audio/JuicerAudio.gd" id="1_juicer_audio"]
+
+[node name="JuicerAudio" type="Node"]
+script = ExtResource("1_juicer_audio")
+
+[node name="StartPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="LoopPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+
+[node name="EndPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

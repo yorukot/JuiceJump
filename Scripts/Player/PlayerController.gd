@@ -24,21 +24,46 @@ var current_charge = 0
 var charge_time = 0.0
 var fruits_collected = 0
 
+# Flag to prevent multiple jump triggers
+var jump_button_pressed = false
+
+# Reference to the juicer audio controller
+@onready var juicer_audio = $JuicerAudio
+
 # Signal emitted when fruit is collected
 signal fruit_collected(points)
 
 func _ready():
 	# Add the player to the "Player" group for fruit detection
 	add_to_group("Player")
+	
+	# Connect to audio signals
+	juicer_audio.start_finished.connect(_on_juicer_start_finished)
+	juicer_audio.end_finished.connect(_on_juicer_end_finished)
+	
+	print("PlayerController: Ready")
 
 func _physics_process(delta):
+	# Track the jump button state
+	var just_pressed_jump = Input.is_action_just_pressed("jump")
+	var just_released_jump = Input.is_action_just_released("jump")
+	
 	# Handle jump charging and jumping
 	if is_on_floor():
 		# Start charging jump when pressing space button
-		if Input.is_action_just_pressed("jump"):
+		if just_pressed_jump and not is_charging and not jump_button_pressed:
+			print("PlayerController: Jump button pressed, starting charge")
 			is_charging = true
+			jump_button_pressed = true
 			current_charge = 0
 			charge_time = 0.0
+			
+			# Play the juicer start sound
+			juicer_audio.play_start()
+		
+		# Reset jump button state when released
+		if just_released_jump:
+			jump_button_pressed = false
 			
 		# While charging, accumulate charge
 		if is_charging:
@@ -47,14 +72,16 @@ func _physics_process(delta):
 			charge_time = min(charge_time, max_charge_time)
 			current_charge = (charge_time / max_charge_time) * max_jump_force
 			
-			# When direction is pressed after charging, apply the jump
-			if Input.is_action_just_released("jump"):
+			# When jump is released, apply the jump
+			if just_released_jump:
+				print("PlayerController: Jump button released, applying jump")
+				
 				# Set jump direction based on input
 				if Input.is_action_pressed("move_right"):
 					jump_direction = 1
 				elif Input.is_action_pressed("move_left"):
 					jump_direction = -1
-				elif Input.is_action_just_released("jump"):
+				else:
 					jump_direction = 0
 					
 				# Calculate jump angle based on charge time
@@ -71,17 +98,14 @@ func _physics_process(delta):
 				# Reset charging state
 				is_charging = false
 				
+				# Play the juicer end sound
+				juicer_audio.play_end()
+				
 				# Update sprite direction
 				if jump_direction < 0:
 					$Sprite2D.flip_h = true
 				elif jump_direction > 0:
 					$Sprite2D.flip_h = false
-		
-		# Cancel charging if jump is released before direction is pressed
-		if Input.is_action_just_released("jump") and is_charging:
-			is_charging = false
-			current_charge = 0
-			charge_time = 0.0
 
 	# Check for wall collisions and bounce
 	if is_on_wall() or is_on_ceiling():
@@ -109,8 +133,17 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	return 
+	# Make sure sounds are stopped when not charging or jumping
+	if not is_charging and is_on_floor() and abs(target_velocity.length()) < 10:
+		juicer_audio.stop_all()
 
+# Audio signal handlers
+func _on_juicer_start_finished():
+	print("PlayerController: Received start_finished signal")
+	
+func _on_juicer_end_finished():
+	print("PlayerController: Received end_finished signal")
+	
 # Called when a fruit is collected
 func collect_fruit(points):
 	fruits_collected += points

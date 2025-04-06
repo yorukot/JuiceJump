@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2f45ywh5oe7g"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://dvo2x2n6kr6bt" path="res://white_box.png" id="2_sprite"]
+[ext_resource type="PackedScene" uid="uid://c3ymhq6vk6ply" path="res://Scenes/Audio/JuicerAudio.tscn" id="3_juicer_audio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb2tr"]
+size = Vector2(32, 32)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vb2tr")
+
+[node name="JuicerAudio" parent="." instance=ExtResource("3_juicer_audio")] 

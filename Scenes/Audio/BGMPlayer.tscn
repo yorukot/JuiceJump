@@ -4,4 +4,5 @@
 
 [node name="BgmPlayer" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_uqocr")
+volume_db = -18.0
 autoplay = true
