@@ -65,6 +65,7 @@ func _on_loop_player_finished():
 # Play the end sound
 func play_end():
 	# Stop the loop sound
+	start_player.stop()
 	loop_player.stop()
 	
 	# Play the end sound only if not already playing
