@@ -23,6 +23,7 @@ var is_charging = false
 var current_charge = 0
 var charge_time = 0.0
 var fruits_collected = 0
+var current_animation_index = 0
 
 # Flag to prevent multiple jump triggers
 var jump_button_pressed = false
@@ -43,7 +44,8 @@ func _ready():
 	
 	# Set default animation
 	$AnimatedSprite2D.play("juice_normal")
-	
+	update_animation_frame()
+
 func _physics_process(delta):
 	# Track the jump button state
 	var just_pressed_jump = Input.is_action_just_pressed("jump")
@@ -123,6 +125,9 @@ func _process(_delta):
 	# Make sure sounds are stopped when not charging or jumping
 	if not is_charging and is_on_floor() and abs(target_velocity.length()) < 10:
 		juicer_audio.stop_all()
+	
+	# Check if animation frame needs to be updated
+	update_animation_frame()
 
 # Audio signal handlers
 func _on_juicer_start_finished():
@@ -135,8 +140,31 @@ func _on_juicer_end_finished():
 func collect_fruit(points):
 	fruits_collected += points
 	emit_signal("fruit_collected", points)
-	# You can add UI updates or other effects here
+	# Update animation frame when fruits are collected
+	update_animation_frame()
 	
 # Getter for the total fruits collected
 func get_fruits_collected():
 	return fruits_collected
+
+# Updates the animation frame based on number of fruits collected
+func update_animation_frame():
+	var frame_index = 0
+	
+	if fruits_collected >= 10:
+		frame_index = 5
+	elif fruits_collected >= 8:
+		frame_index = 4
+	elif fruits_collected >= 6:
+		frame_index = 3
+	elif fruits_collected >= 4:
+		frame_index = 2
+	elif fruits_collected >= 2:
+		frame_index = 1
+	else:
+		frame_index = 0
+	
+	# Only update if the frame has changed
+	if frame_index != current_animation_index:
+		current_animation_index = frame_index
+		$AnimatedSprite2D.frame = current_animation_index

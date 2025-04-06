@@ -9,7 +9,6 @@ radius = 11.0
 [node name="Banana" type="Area2D" groups=["Fruits"]]
 z_index = 10
 script = ExtResource("1_2x4sb")
-points = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 2)
