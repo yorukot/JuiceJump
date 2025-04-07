@@ -251,7 +251,7 @@ sprite_frames = SubResource("SpriteFrames_jh1yi")
 animation = &"juice_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.625, 2.8125)
+position = Vector2(-2, 2)
 shape = SubResource("RectangleShape2D_1nex2")
 
 [node name="JuicerAudio" parent="." instance=ExtResource("3_juicer_audio")]
