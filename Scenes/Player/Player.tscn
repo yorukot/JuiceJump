@@ -248,7 +248,7 @@ size = Vector2(39.25, 72.375)
 position = Vector2(2.5, 2.5)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_jh1yi")
-animation = &"juice_normal"
+animation = &"juice_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.625, 2.8125)
