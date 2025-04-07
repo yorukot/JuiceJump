@@ -268,14 +268,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o6xbj")
 
-[node name="TextContainer" type="Control" parent="."]
-custom_minimum_size = Vector2(200, 60)
+[node name="TitleContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-anchors_preset = 0
-offset_left = 416.0
-offset_top = 88.0
-offset_right = 616.0
-offset_bottom = 148.0
+offset_left = 440.0
+offset_top = 80.0
+offset_right = 692.0
+offset_bottom = 126.0
+theme_override_constants/separation = 15
+alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -289,25 +289,8 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TitleGroup" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/TitleGroup"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.4, 0.4, 0.4, 0.537255)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("6_5mdu6")
-theme_override_font_sizes/font_size = 36
-text = "JuicerJump"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer/TitleGroup"]
-position = Vector2(-34, 26)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer"]
+position = Vector2(-10, 26)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ket2i")
 animation = &"juice_3"
@@ -326,6 +309,17 @@ layout_mode = 2
 texture_normal = ExtResource("3_v3js6")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.4, 0.4, 0.4, 0.537255)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("6_5mdu6")
+theme_override_font_sizes/font_size = 36
+text = "JuicerJump"
+vertical_alignment = 1
 
 [node name="SettingsDialog" parent="." instance=ExtResource("4_5i1g2")]
 visible = false
