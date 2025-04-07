@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bcjgkecinyegp"]
+[gd_scene load_steps=19 format=4 uid="uid://bcjgkecinyegp"]
 
 [ext_resource type="Script" uid="uid://chd1wdduspig7" path="res://Scripts/Camera/CameraController.gd" id="1_7liah"]
 [ext_resource type="PackedScene" uid="uid://bif5is2mpm5du" path="res://Scenes/Player/Player.tscn" id="1_e6wm4"]
@@ -7,10 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://kyj8ssf6b3oi" path="res://blue_box.png" id="2_61p7r"]
 [ext_resource type="Script" uid="uid://chf4pxc0gfq3m" path="res://Scripts/Player/PlayerController.gd" id="2_e6wm4"]
 [ext_resource type="Texture2D" uid="uid://u804xc7xg4m3" path="res://Asset/Background/Gemini_Generated_Image_1u077j1u077j1u07.jpeg" id="3_fg8dm"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
+[ext_resource type="PackedScene" uid="uid://bv1brt2av1suv" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
 [ext_resource type="Texture2D" uid="uid://c4wkf2rs3elb8" path="res://Asset/Map/Terrain_1.png" id="4_61p7r"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/GameTimer.tscn" id="5_e6wm4"]
 [ext_resource type="Texture2D" uid="uid://bhdk3r4c3ly40" path="res://Asset/Map/Jungal.png" id="6_t6gwd"]
+[ext_resource type="Texture2D" uid="uid://dilqu3271c3wk" path="res://Asset/Background/japan.png" id="12_vdmki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg8dm"]
 texture = ExtResource("1_t86hv")
@@ -281,7 +282,7 @@ player_path = NodePath("../Juicer")
 
 [node name="Juicer" parent="." instance=ExtResource("1_e6wm4")]
 z_index = 5
-position = Vector2(288, 88)
+position = Vector2(496, -904)
 script = ExtResource("2_e6wm4")
 
 [node name="Map" type="Node" parent="."]
@@ -309,3 +310,7 @@ position = Vector2(495, 478)
 
 [node name="Banana4" parent="." instance=ExtResource("1_xwcck")]
 position = Vector2(530, 471)
+
+[node name="Japan" type="Sprite2D" parent="."]
+position = Vector2(480, -1448)
+texture = ExtResource("12_vdmki")

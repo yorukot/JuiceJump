@@ -31,6 +31,9 @@ var jump_button_pressed = false
 # Reference to the juicer audio controller
 @onready var juicer_audio = $JuicerAudio
 
+# Status bar for jump strength
+var strength_bar
+
 # Signal emitted when fruit is collected
 signal fruit_collected(points)
 
@@ -45,6 +48,49 @@ func _ready():
 	# Set default animation
 	$AnimatedSprite2D.play("juice_normal")
 	update_animation_frame()
+	
+	# Create the strength bar
+	create_strength_bar()
+
+func create_strength_bar():
+	# Create a ProgressBar for jump strength
+	strength_bar = ProgressBar.new()
+	strength_bar.min_value = 0
+	strength_bar.max_value = max_jump_force
+	strength_bar.value = 0
+	
+	# Set the size and position of the progress bar
+	strength_bar.custom_minimum_size = Vector2(50, 5)  # Thin vertical bar
+	strength_bar.position = Vector2(-40, 20)  # Position on the left side of player
+	
+	# Remove percentage display
+	strength_bar.show_percentage = false
+	
+	# Make the bar invisible by default (only show when charging)
+	strength_bar.visible = false
+	
+	# Rotate the bar to be vertical (90 degrees)
+	strength_bar.rotation_degrees = 270
+	
+	# Style the progress bar
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0.2, 0.2, 0.2, 0.7)  # Background color
+	style.border_width_left = 0
+	style.border_width_right = 0
+	style.border_width_top = 0
+	style.border_width_bottom = 0
+	strength_bar.add_theme_stylebox_override("background", style)
+	
+	var fill_style = StyleBoxFlat.new()
+	fill_style.bg_color = Color(0.9, 0.3, 0.2, 0.9)  # Fill color
+	fill_style.border_width_left = 0
+	fill_style.border_width_right = 0
+	fill_style.border_width_top = 0
+	fill_style.border_width_bottom = 0
+	strength_bar.add_theme_stylebox_override("fill", fill_style)
+	
+	# Add the progress bar to the player
+	add_child(strength_bar)
 
 func _physics_process(delta):
 	# Track the jump button state
@@ -59,6 +105,11 @@ func _physics_process(delta):
 			jump_button_pressed = true
 			current_charge = 0
 			charge_time = 0.0
+			
+			# Show the strength bar
+			if strength_bar:
+				strength_bar.visible = true
+				strength_bar.value = 0
 			
 			# Play the juicer start sound
 			juicer_audio.play_start()
@@ -76,6 +127,10 @@ func _physics_process(delta):
 			charge_time += delta
 			charge_time = min(charge_time, max_charge_time)
 			current_charge = (charge_time / max_charge_time) * max_jump_force
+			
+			# Update the strength bar
+			if strength_bar:
+				strength_bar.value = current_charge
 			
 			# When jump is released, apply the jump
 			if just_released_jump:
@@ -101,6 +156,10 @@ func _physics_process(delta):
 				
 				# Reset charging state
 				is_charging = false
+				
+				# Hide the strength bar
+				if strength_bar:
+					strength_bar.visible = false
 				
 				# Play the juicer end sound
 				juicer_audio.play_end()
