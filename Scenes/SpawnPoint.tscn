@@ -282,7 +282,7 @@ player_path = NodePath("../Juicer")
 
 [node name="Juicer" parent="." instance=ExtResource("1_e6wm4")]
 z_index = 5
-position = Vector2(380, -1265)
+position = Vector2(24, -1024)
 script = ExtResource("2_e6wm4")
 max_charge_time = 2.0
 min_jump_angle = 0.5
