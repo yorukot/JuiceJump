@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_m27qa"]
 radius = 11.0
 
-[node name="Apple" type="Area2D" groups=["Fruits"]]
+[node name="Orange" type="Area2D" groups=["Fruits"]]
 z_index = 10
 script = ExtResource("1_51hlk")
 points = 2
