@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cd8yvkp3r38t3" path="res://Scenes/Collectables/Apple.tscn" id="1_xwcck"]
 [ext_resource type="Texture2D" uid="uid://kyj8ssf6b3oi" path="res://blue_box.png" id="2_61p7r"]
 [ext_resource type="Script" uid="uid://chf4pxc0gfq3m" path="res://Scripts/Player/PlayerController.gd" id="2_e6wm4"]
-[ext_resource type="Texture2D" uid="uid://u804xc7xg4m3" path="res://Asset/Background/Gemini_Generated_Image_1u077j1u077j1u07.jpeg" id="3_fg8dm"]
-[ext_resource type="PackedScene" uid="uid://bv1brt2av1suv" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
 [ext_resource type="Texture2D" uid="uid://c4wkf2rs3elb8" path="res://Asset/Map/Terrain_1.png" id="4_61p7r"]
-[ext_resource type="PackedScene" uid="uid://lyb0xnm2swxh" path="res://Scenes/UI/GameTimer.tscn" id="5_e6wm4"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/GameTimer.tscn" id="5_e6wm4"]
 [ext_resource type="Texture2D" uid="uid://bhdk3r4c3ly40" path="res://Asset/Map/Jungal.png" id="6_t6gwd"]
-[ext_resource type="Texture2D" uid="uid://cvm11g7rnpkv7" path="res://Asset/Background/IMG_8298.JPG" id="7_kom4g"]
-[ext_resource type="Texture2D" uid="uid://crwk2ke25sy1i" path="res://Asset/Background/Japanese pixel art wallpapers castle.jpg" id="9_kom4g"]
-[ext_resource type="Texture2D" uid="uid://bfjfbgpwusymt" path="res://Asset/Background/IMG_8297.JPG" id="13_kx31o"]
+[ext_resource type="Texture2D" uid="uid://crphfym55hg4q" path="res://Asset/Background/image-3.jpg" id="8_kom4g"]
+[ext_resource type="Texture2D" uid="uid://cl5qwaaqlok64" path="res://Asset/Background/image-2.jpg" id="9_81pfd"]
+[ext_resource type="Texture2D" uid="uid://d338f6xn2cq1x" path="res://Asset/Background/image-4.jpg" id="10_03tri"]
+[ext_resource type="Texture2D" uid="uid://wn302vlkpd40" path="res://Asset/Background/image.jpg" id="14_kom4g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg8dm"]
 texture = ExtResource("1_t86hv")
@@ -281,7 +281,7 @@ player_path = NodePath("../Juicer")
 
 [node name="Juicer" parent="." instance=ExtResource("1_e6wm4")]
 z_index = 5
-position = Vector2(521, -1494)
+position = Vector2(563, 434)
 script = ExtResource("2_e6wm4")
 max_charge_time = 2.0
 min_jump_angle = 0.5
@@ -291,26 +291,26 @@ min_jump_angle = 0.5
 [node name="background" type="TileMapLayer" parent="Map"]
 tile_set = SubResource("TileSet_t6gwd")
 
-[node name="Img8298" type="Sprite2D" parent="Map"]
-texture_filter = 3
-position = Vector2(487, -119)
-scale = Vector2(1.31114, 0.955446)
-texture = ExtResource("7_kom4g")
+[node name="Image2" type="Sprite2D" parent="Map"]
+texture_filter = 2
+position = Vector2(481, -120.25)
+scale = Vector2(1.29891, 0.950114)
+texture = ExtResource("14_kom4g")
 
-[node name="GeminiGeneratedImage1u077j1u077j1u07" type="Sprite2D" parent="Map"]
-position = Vector2(474.5, -2655)
-scale = Vector2(0.467285, 0.525391)
-texture = ExtResource("3_fg8dm")
+[node name="Image-3" type="Sprite2D" parent="Map"]
+position = Vector2(481.5, -2679)
+scale = Vector2(0.469238, 0.609375)
+texture = ExtResource("8_kom4g")
 
-[node name="JapanesePixelArtWallpapersCastle" type="Sprite2D" parent="Map"]
-position = Vector2(482, -1433.5)
-scale = Vector2(1.30435, 1.04511)
-texture = ExtResource("9_kom4g")
+[node name="Image-2" type="Sprite2D" parent="Map"]
+position = Vector2(479, -1402)
+scale = Vector2(1.30163, 1)
+texture = ExtResource("9_81pfd")
 
-[node name="Img8297" type="Sprite2D" parent="Map"]
-position = Vector2(478.5, -3736)
-scale = Vector2(2.10444, 1.448)
-texture = ExtResource("13_kx31o")
+[node name="Image-4" type="Sprite2D" parent="Map"]
+position = Vector2(480, -3830.5)
+scale = Vector2(2.12889, 1.41733)
+texture = ExtResource("10_03tri")
 
 [node name="floor" type="TileMapLayer" parent="Map"]
 position = Vector2(0, -7)
