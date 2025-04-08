@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cl5qwaaqlok64" path="res://Asset/Background/image-2.jpg" id="9_81pfd"]
 [ext_resource type="Texture2D" uid="uid://d338f6xn2cq1x" path="res://Asset/Background/image-4.jpg" id="10_03tri"]
 [ext_resource type="Texture2D" uid="uid://wn302vlkpd40" path="res://Asset/Background/image.jpg" id="14_kom4g"]
-[ext_resource type="PackedScene" path="res://Scenes/Collectables/Orange.tscn" id="15_03tri"]
+[ext_resource type="PackedScene" uid="uid://2mmqj23vxmxn" path="res://Scenes/Collectables/Orange.tscn" id="15_03tri"]
 [ext_resource type="PackedScene" path="res://Scenes/Collectables/Lemo.tscn" id="16_ltsec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg8dm"]
@@ -295,8 +295,8 @@ tile_set = SubResource("TileSet_t6gwd")
 
 [node name="Image2" type="Sprite2D" parent="Map"]
 texture_filter = 2
-position = Vector2(481, -120.25)
-scale = Vector2(1.29891, 0.950114)
+position = Vector2(479.999, -121.75)
+scale = Vector2(1.30163, 0.952399)
 texture = ExtResource("14_kom4g")
 
 [node name="Image-3" type="Sprite2D" parent="Map"]
@@ -336,15 +336,18 @@ position = Vector2(918, -161)
 
 [node name="Orange2" parent="." instance=ExtResource("15_03tri")]
 position = Vector2(763, -631)
+points = 1
 
 [node name="Apple3" parent="." instance=ExtResource("1_xwcck")]
 position = Vector2(36, -1783)
 
 [node name="Orange3" parent="." instance=ExtResource("15_03tri")]
 position = Vector2(478, -2966)
+points = 1
 
 [node name="Apple4" parent="." instance=ExtResource("1_xwcck")]
 position = Vector2(895, -3470)
 
 [node name="Orange4" parent="." instance=ExtResource("15_03tri")]
 position = Vector2(319, 487)
+points = 1
