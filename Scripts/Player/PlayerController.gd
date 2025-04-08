@@ -36,6 +36,8 @@ var strength_bar
 
 # Signal emitted when fruit is collected
 signal fruit_collected(points)
+# Signal emitted when level is completed
+signal level_completed
 
 func _ready():
 	# Add the player to the "Player" group for fruit detection

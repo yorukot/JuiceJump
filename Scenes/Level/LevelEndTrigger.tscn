@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbmcyreaypw18"]
+
+[ext_resource type="Script" uid="uid://ctreexk5gee1x" path="res://Scripts/Level/LevelEndTrigger.gd" id="1_level_end"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nex2"]
+size = Vector2(32, 32)
+
+[node name="LevelEndTrigger" type="Area2D"]
+script = ExtResource("1_level_end")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1nex2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 0.5)
+scale = Vector2(2, 2)
