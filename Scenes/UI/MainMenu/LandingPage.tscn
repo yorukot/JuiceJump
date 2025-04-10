@@ -302,12 +302,12 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("6_5mdu6")
 theme_override_font_sizes/font_size = 36
-text = "JuicerJump"
+text = "JuiceJump"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/VBoxContainer/TitleGroup"]
-position = Vector2(-34, 26)
+position = Vector2(-46, 23)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ket2i")
 animation = &"juice_3"

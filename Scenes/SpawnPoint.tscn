@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bcjgkecinyegp"]
+[gd_scene load_steps=25 format=4 uid="uid://bcjgkecinyegp"]
 
 [ext_resource type="Script" uid="uid://chd1wdduspig7" path="res://Scripts/Camera/CameraController.gd" id="1_7liah"]
 [ext_resource type="PackedScene" uid="uid://bif5is2mpm5du" path="res://Scenes/Player/Player.tscn" id="1_e6wm4"]
@@ -6,16 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://cd8yvkp3r38t3" path="res://Scenes/Collectables/Apple.tscn" id="1_xwcck"]
 [ext_resource type="Texture2D" uid="uid://kyj8ssf6b3oi" path="res://blue_box.png" id="2_61p7r"]
 [ext_resource type="Script" uid="uid://chf4pxc0gfq3m" path="res://Scripts/Player/PlayerController.gd" id="2_e6wm4"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
+[ext_resource type="PackedScene" uid="uid://bv1brt2av1suv" path="res://Scenes/UI/FruitCounter.tscn" id="3_vdmki"]
 [ext_resource type="Texture2D" uid="uid://c4wkf2rs3elb8" path="res://Asset/Map/Terrain_1.png" id="4_61p7r"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/GameTimer.tscn" id="5_e6wm4"]
+[ext_resource type="PackedScene" uid="uid://lyb0xnm2swxh" path="res://Scenes/UI/GameTimer.tscn" id="5_e6wm4"]
 [ext_resource type="Texture2D" uid="uid://bhdk3r4c3ly40" path="res://Asset/Map/Jungal.png" id="6_t6gwd"]
 [ext_resource type="Texture2D" uid="uid://crphfym55hg4q" path="res://Asset/Background/image-3.jpg" id="8_kom4g"]
 [ext_resource type="Texture2D" uid="uid://cl5qwaaqlok64" path="res://Asset/Background/image-2.jpg" id="9_81pfd"]
 [ext_resource type="Texture2D" uid="uid://d338f6xn2cq1x" path="res://Asset/Background/image-4.jpg" id="10_03tri"]
 [ext_resource type="Texture2D" uid="uid://wn302vlkpd40" path="res://Asset/Background/image.jpg" id="14_kom4g"]
 [ext_resource type="PackedScene" uid="uid://2mmqj23vxmxn" path="res://Scenes/Collectables/Orange.tscn" id="15_03tri"]
-[ext_resource type="PackedScene" path="res://Scenes/Collectables/Lemo.tscn" id="16_ltsec"]
+[ext_resource type="PackedScene" uid="uid://cd8yvkp3r38t2" path="res://Scenes/Collectables/Lemo.tscn" id="16_ltsec"]
+[ext_resource type="Texture2D" uid="uid://cntjof7tuf07c" path="res://Asset/Icon/juiceboxbuilding.png" id="17_ltsec"]
+[ext_resource type="Texture2D" uid="uid://0isyh4cv50nm" path="res://Asset/Icon/Untitled-2025-04-07-1607-2.png" id="18_5k3qp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg8dm"]
 texture = ExtResource("1_t86hv")
@@ -351,3 +353,13 @@ position = Vector2(895, -3470)
 [node name="Orange4" parent="." instance=ExtResource("15_03tri")]
 position = Vector2(319, 487)
 points = 1
+
+[node name="Juiceboxbuilding" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(887, -4014)
+texture = ExtResource("17_ltsec")
+
+[node name="Untitled-2025-04-07-1607-2" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(792, 304)
+texture = ExtResource("18_5k3qp")
